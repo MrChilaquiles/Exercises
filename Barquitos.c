@@ -9,13 +9,14 @@ int main() {
     printf("Para jugar necesitas introducir una coordenada como en el siguiente ejemplo:\nInserte una coordenada: 0,1\n");
     printf("Listo para la accion? Que comience la batalla!!!\n");
     while (hs < 4) {
-        //system("clear");
+        printf("Barcos restantes: %d\n", 4 - hs);
         printf("Ingrese una coordenda: ");
         scanf("%d,%d", &x, &y);
-        if (x <= 0 && x >= 1 || y <= 0 && y >= 3) {
+        if ((x < 0 || x > 1) || (y < 0 || y > 3)) {
             printf("La coordenada %d,%d no es valida\n", x, y);
         } else if (tablero[x][y] == 1) {
             printf("Me electrocutaste pedrito!!!\n");
+            tablero[x][y] = 'X';
             hs++;
         } else {
             printf("Intentalo de nuevo\n");
