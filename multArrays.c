@@ -17,7 +17,7 @@ int main() {
             printf("Valor del vector A%d: %d, B%d: %d, C%d: %d\n", i + 1, A[i], i + 1, B[i], i + 1, C[i]);
         }
     } else {
-        printf("Ingrese una cantidad valida");
+        printf("Ingrese una cantidad valida :)");
     }
     return 8;
 }
