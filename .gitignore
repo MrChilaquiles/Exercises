@@ -4,4 +4,6 @@
 *.elf
 *
 !*.c
-!sistemabancario/
+!Sistema-Bancario/
+!Diagramas/
+!*.pdf
