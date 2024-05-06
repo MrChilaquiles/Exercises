@@ -39,6 +39,24 @@ void verificarDatos() {
     }
     printf("Datos ingresados correctamente!!!\nNombre completo: %s %s", nombre, apellidos);
 }
+void validacionDatos(int numValidar) {
+    bool isOk = false;
+    int validacionIsOk = 0;
+    if (numValidar <= saldo && numValidar > 0) {
+        printf("Los datos ingresados son correctos?\n1. Si\n2. No");
+        scanf("%d", &validacionIsOk);
+        limpiarBuffer();
+        if (validacionIsOk == 1) {
+            isOk = true;
+        } else {
+            printf("Ingrese los datos nuevamente");
+            isOk = false;
+        }
+    } else {
+        printf("Error: Ingrese una cantidad valida");
+        isOk = false;
+    }
+}
 void registroCliente() {
     bool validacionNIP = false;
     system("cls");
