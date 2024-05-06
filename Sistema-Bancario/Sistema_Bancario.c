@@ -39,7 +39,7 @@ void verificarDatos() {
     }
     printf("Datos ingresados correctamente!!!\nNombre completo: %s %s", nombre, apellidos);
 }
-void validacionDatos(int numValidar) {
+void validacionDatos(int numValidar, bool isOk) {
     bool isOk = false;
     int validacionIsOk = 0;
     if (numValidar <= saldo && numValidar > 0) {
@@ -86,8 +86,24 @@ void registroCliente() {
     system("cls");
 }
 void deposito() {
+    int monto = 0, validacionIsOk = 0;
+    bool isOk = false;
     system("cls");
-    printf("prueba");
+    registroCliente();
+    while (isOk == false) {
+        printf("Ingrese monto a depositar: ");
+        scanf("%d", &monto);
+        limpiarBuffer();
+        printf("El monto ingresado esta correcto?\n1. Si\n2.No");
+        scanf("%d", &validacionIsOk);
+        if (validacionIsOk == 1) {
+            isOk = true;
+        } else {
+            printf("Ingrese el monto de nuevo");
+        }
+    }
+    printf("Monto depositado: %d\nNumero de tarjeta: %d", monto, numTarj);
+    saldo += monto;
     getch();
     system("cls");
 }
