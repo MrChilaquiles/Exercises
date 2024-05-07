@@ -108,21 +108,21 @@ void deposito() { // Funcion para depositar dinero
     getch();
     system("cls");
 }
-void verSaldo() {
+void verSaldo() { // Funcion para verificar el saldo
     system("cls");
-    verificarDatos();
+    verificarDatos(); // Llama a la funcion verificarDatos
     printf("Saldo en la cuenta: %d", saldo);
     getch();
     system("cls");
 }
-void transDinero() {
+void transDinero() { // Funcion para transferir dinero
     int numTarjBen = 0, cantDeposito = 0;
     char nomBeneficiario[50];
     bool isOk = false;
     system("cls");
-    verificarDatos();
+    verificarDatos(); // Llama a la funcion verificarDatos
     printf("Saldo disponible: %d", saldo);
-    while (isOk == false) {
+    while (isOk == false) { // Mientras isOk sea falso se ejecutara el siguiente bloque de codigo
         printf("Ingrese el nombre del beneficiario: ");
         fgets(nomBeneficiario, 50, stdin);
         limpiarBuffer();
@@ -131,20 +131,20 @@ void transDinero() {
         limpiarBuffer();
         printf("Ingrese la cantidad a depositar: ");
         scanf("%d", &cantDeposito);
-        validacionDatos(cantDeposito, &isOk);
+        validacionDatos(cantDeposito, &isOk); // Llama a la funcion validacionDatos y le pasa los parametros cantDeposito y isOk, en el cual, isOk es un puntero a bool que se utiliza para cambiar el valor de la variable isOk 
     }
     printf("Transferencia exitosa!!!\nNombre del beneficiario: %s\nNumero de tarjeta: %d\nCantidad depositada: %d", nomBeneficiario, numTarjBen, cantDeposito);
-    saldo -= cantDeposito;
+    saldo -= cantDeposito; // Resta la cantidad depositada al saldo
     getch();
     system("cls");
 }
-void recarga() {
+void recarga() { // Funcion para recargar tiempo aire
     int comp = 0, cantRecarga = 0, numRecarga = 0;
     bool isOk = false;
     system("cls");
-    verificarDatos();
+    verificarDatos(); // Llama a la funcion verificarDatos
     printf("Saldo disponible: %d", saldo);
-    while (isOk == false) {
+    while (isOk == false) { // Mientras isOk sea falso se ejecutara el siguiente bloque de codigo
         printf("Ingrese la compania a recargar:\n1. Telcel\n2. Movistar\n3. AT&T\n4. Unefon\n5. Pillofon\nOpcion: ");
         scanf("%d", &comp);
         limpiarBuffer();
@@ -153,27 +153,27 @@ void recarga() {
         limpiarBuffer();
         printf("Ingrese la cantidad a recargar: ");
         scanf("%d", &cantRecarga);
-        validacionDatos(cantRecarga, &isOk);
+        validacionDatos(cantRecarga, &isOk); // Llama a la funcion validacionDatos y le pasa los parametros cantRecarga y isOk, en el cual, isOk es un puntero a bool que se utiliza para cambiar el valor de la variable isOk
     }
     printf("Recarga exitosa!!!\nNumero de celular: %d\nCantidad recargada: %d", numRecarga, cantRecarga);
-    saldo -= cantRecarga;
+    saldo -= cantRecarga; // Resta la cantidad recargada al saldo
     getch();
     system("cls");
 }
-void cambioNIP() {
+void cambioNIP() { // Funcion para cambiar el NIP
     int validacionIsOk = 0;
     char nuevoNIP[5], verificarNIP[5];
     bool isOk = false;
     system("cls");
-    verificarDatos();
+    verificarDatos(); // Llama a la funcion verificarDatos
     printf("NIP actual: %s\n", numNIP);
-    while (isOk == false) {
+    while (isOk == false) { // Mientras isOk sea falso se ejecutara el siguiente bloque de codigo
         printf("Ingrese el nuevo NIP: ");
         scanf("%s", &nuevoNIP);
-        if (strlen(nuevoNIP) == 4) {
+        if (strlen(nuevoNIP) == 4) { // Si la longitud de nuevoNIP es igual a 4 se ejecutara el siguiente bloque de codigo
             printf("El nuevo NIP es correcto?\n1. Si\n2. No");
             scanf("%d", &validacionIsOk);
-            if (validacionIsOk == 1) {
+            if (validacionIsOk == 1) { // Si validacionIsOk es igual a 1 se ejecutara el siguiente bloque de codigo
                 isOk = true;
             } else {
                 printf("Ingrese el NIP de nuevo");
@@ -183,7 +183,7 @@ void cambioNIP() {
         }
     }
     printf("NIP cambiado exitosamente!!!");
-    strcpy(numNIP, nuevoNIP);
+    strcpy(numNIP, nuevoNIP); // Copia el valor de nuevoNIP a numNIP
     getch();
     system("cls");
 }
