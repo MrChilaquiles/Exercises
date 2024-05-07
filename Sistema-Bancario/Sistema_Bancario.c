@@ -161,8 +161,29 @@ void recarga() {
     system("cls");
 }
 void cambioNIP() {
+    int validacionIsOk = 0;
+    char nuevoNIP[5], verificarNIP[5];
+    bool isOk = false;
     system("cls");
-    printf("prueba");
+    verificarDatos();
+    printf("NIP actual: %s\n", numNIP);
+    while (isOk == false) {
+        printf("Ingrese el nuevo NIP: ");
+        scanf("%s", &nuevoNIP);
+        if (strlen(nuevoNIP) == 4) {
+            printf("El nuevo NIP es correcto?\n1. Si\n2. No");
+            scanf("%d", &validacionIsOk);
+            if (validacionIsOk == 1) {
+                isOk = true;
+            } else {
+                printf("Ingrese el NIP de nuevo");
+            }
+        } else {
+            printf("Error: Ingrese un NIP valido");
+        }
+    }
+    printf("NIP cambiado exitosamente!!!");
+    strcpy(numNIP, nuevoNIP);
     getch();
     system("cls");
 }
