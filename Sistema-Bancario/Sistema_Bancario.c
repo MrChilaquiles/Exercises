@@ -139,8 +139,24 @@ void transDinero() {
     system("cls");
 }
 void recarga() {
+    int comp = 0, cantRecarga = 0, numRecarga = 0;
+    bool isOk = false;
     system("cls");
-    printf("prueba");
+    verificarDatos();
+    printf("Saldo disponible: %d", saldo);
+    while (isOk == false) {
+        printf("Ingrese la compania a recargar:\n1. Telcel\n2. Movistar\n3. AT&T\n4. Unefon\n5. Pillofon\nOpcion: ");
+        scanf("%d", &comp);
+        limpiarBuffer();
+        printf("Ingrese el numero de celular a recargar: ");
+        scanf("%d", &numRecarga);
+        limpiarBuffer();
+        printf("Ingrese la cantidad a recargar: ");
+        scanf("%d", &cantRecarga);
+        validacionDatos(cantRecarga, &isOk);
+    }
+    printf("Recarga exitosa!!!\nNumero de celular: %d\nCantidad recargada: %d", numRecarga, cantRecarga);
+    saldo -= cantRecarga;
     getch();
     system("cls");
 }
