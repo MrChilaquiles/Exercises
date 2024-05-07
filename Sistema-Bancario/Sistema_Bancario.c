@@ -41,21 +41,21 @@ void verificarDatos() { // Funcion para verificar los datos del cliente
     }
     printf("Datos ingresados correctamente!!!\nNombre completo: %s %s\n", nombre, apellidos); 
 }
-void validacionDatos(int numValidar, bool isOk) { // Funcion para validar los datos ingresados
+void validacionDatos(int numValidar, bool* isOk) { // Funcion para validar los datos ingresados
     int validacionIsOk = 0;
     if (numValidar <= saldo && numValidar > 0) { // Si numValidar es menor o igual a saldo y numValidar es mayor a 0 se ejecutara el siguiente bloque de codigo
         printf("Los datos ingresados son correctos?\n1. Si\n2. No");
         scanf("%d", &validacionIsOk);
         limpiarBuffer();
         if (validacionIsOk == 1) { // Si validacionIsOk es igual a 1 se ejecutara el siguiente bloque de codigo
-            isOk = true;
+            *isOk = true;
         } else {
             printf("Ingrese los datos nuevamente");
-            isOk = false;
+            *isOk = false;
         }
     } else {
         printf("Error: Ingrese una cantidad valida");
-        isOk = false;
+        *isOk = false;
     }
 }
 void registroCliente() { // Funcion para registrar a un nuevo cliente
@@ -116,8 +116,25 @@ void verSaldo() {
     system("cls");
 }
 void transDinero() {
+    int numTarjBen = 0, cantDeposito = 0;
+    char nomBeneficiario[50];
+    bool isOk = false;
     system("cls");
-    printf("prueba");
+    verificarDatos();
+    printf("Saldo disponible: %d", saldo);
+    while (isOk == false) {
+        printf("Ingrese el nombre del beneficiario: ");
+        fgets(nomBeneficiario, 50, stdin);
+        limpiarBuffer();
+        printf("Ingrese el numero de tarjeta del beneficiario: ");
+        scanf("%d", &numTarjBen);
+        limpiarBuffer();
+        printf("Ingrese la cantidad a depositar: ");
+        scanf("%d", &cantDeposito);
+        validacionDatos(cantDeposito, &isOk);
+    }
+    printf("Transferencia exitosa!!!\nNombre del beneficiario: %s\nNumero de tarjeta: %d\nCantidad depositada: %d", nomBeneficiario, numTarjBen, cantDeposito);
+    saldo -= cantDeposito;
     getch();
     system("cls");
 }
