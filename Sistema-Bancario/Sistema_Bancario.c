@@ -110,7 +110,8 @@ void deposito() { // Funcion para depositar dinero
 }
 void verSaldo() {
     system("cls");
-    printf("prueba");
+    verificarDatos();
+    printf("Saldo en la cuenta: %d", saldo);
     getch();
     system("cls");
 }
