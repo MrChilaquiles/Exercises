@@ -4,6 +4,7 @@
 *.elf
 *
 !*.c
+!*.cpp
 !*.pdf
 !IntProgra
 !prograEstructurada
