@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define dim 10
 int main() {
-    int tamM, tamN, kEsc = 0, opc = 1;
+    int tamM, tamN, tamO, kEsc = 0, opc = 1;
     float matA[dim][dim], matB[dim][dim];
     while (opc != 0) {
         printf("Selecciona una opcion: \n1.- Suma de matrices\n2.- Resta de matrices\n3.- Multiplicacion por escalar\n4.- Multiplicacion de matrices\n0.- Salir\nOpcion: ");
@@ -28,7 +28,7 @@ int main() {
                     printf("\n");
                 }
             } else {
-                printf("Ingrese una opcion valida");
+                printf("Ingrese una opcion valida\n");
             }
             break;
         case 2:
@@ -52,7 +52,7 @@ int main() {
                     printf("\n");
                 }
             } else {
-                printf("Ingrese una opcion valida");
+                printf("Ingrese una opcion valida\n");
             }
             break;
         case 3:
@@ -76,7 +76,7 @@ int main() {
                     printf("\n");
                 }
             } else {
-                printf("Ingrese una opcion valida");
+                printf("Ingrese una opcion valida\n");
             }
             break;
         case 4:
@@ -85,15 +85,16 @@ int main() {
             printf("\nIngrese el tamano de la matriz B: ");
             scanf("%d", &tamN);
             if ((tamM > 0 && tamM < 10) && (tamN > 0 && tamN < 10)) {
-                for (int i = 0; i < tamM && i < tamN; i++) {
-                    for (int j = 0; j < tamM && j < tamN; j++) {
-                        if (matA[i][j] < tamM) {
+                tamO = (tamM > tamN) ? tamM : tamN;
+                for (int i = 0; i < tamO; i++) {
+                    for (int j = 0; j < tamO; j++) {
+                        if (i < tamM && j < tamM) {
                             printf("Ingrece el valor para la matriz A en la posicion %d, %d: ", i, j);
                             scanf("%f", &matA[i][j]);
                         } else {
                             matA[i][j] = 0;
                         }
-                        if (matB[i][j] < tamN) {
+                        if (i < tamN && j < tamN) {
                             printf("Ingrece el valor para la matriz B en la posicion %d, %d: ", i, j);
                             scanf("%f", &matB[i][j]);
                         } else {
@@ -103,21 +104,21 @@ int main() {
                     }
                 }
                 printf("Resultado de la multiplicacion de matrices: \n");
-                for (int i = 0; i < tamM; i++) {
-                    for (int j = 0;j < tamM; j++) {
+                for (int i = 0; i < tamO; i++) {
+                    for (int j = 0;j < tamO; j++) {
                         printf("%f ", matA[i][j]);
                     }
                     printf("\n");
                 }
             } else {
-                printf("Ingrese una opcion valida");
+                printf("Ingrese una opcion valida\n");
             }
             break;
         case 0:
             printf("Gracias!! nos vemos luego :)");
             break;
         default:
-            printf("Ingrese una opcion valida");
+            printf("Ingrese una opcion valida\n");
             break;
         }
     }
