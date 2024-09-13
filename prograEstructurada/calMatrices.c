@@ -1,8 +1,8 @@
 #include <stdio.h>
 #define dim 10
 int main() {
-    int tamM, tamN, tamO, kEsc = 0, opc = 1;
-    float matA[dim][dim], matB[dim][dim];
+    int tamM, tamM1, tamN, tamN1, kEsc = 0, opc = 1;
+    float matA[dim][dim], matB[dim][dim], matC[dim][dim];
     while (opc != 0) {
         printf("Selecciona una opcion: \n1.- Suma de matrices\n2.- Resta de matrices\n3.- Multiplicacion por escalar\n4.- Multiplicacion de matrices\n0.- Salir\nOpcion: ");
         scanf("%d", &opc);
@@ -80,35 +80,77 @@ int main() {
             }
             break;
         case 4:
-            printf("\nIngrese el tamano de la matriz A: ");
+            printf("Ingresa un valor para la fila de la matriz A: ");
             scanf("%d", &tamM);
-            printf("\nIngrese el tamano de la matriz B: ");
+            printf("Ingresa un valor para la columna de la matriz A: ");
+            scanf("%d", &tamM1);
+            printf("Ingresa un valor para la fila de la matriz B: ");
             scanf("%d", &tamN);
-            if ((tamM > 0 && tamM < 10) && (tamN > 0 && tamN < 10)) {
-                tamO = (tamM > tamN) ? tamM : tamN;
-                for (int i = 0; i < tamO; i++) {
-                    for (int j = 0; j < tamO; j++) {
-                        if (i < tamM && j < tamM) {
-                            printf("Ingrece el valor para la matriz A en la posicion %d, %d: ", i, j);
+            printf("Ingresa un valor para la columna de la matriz B: ");
+            scanf("%d", &tamN1);
+            if ((tamM > 0 && tamM < 10) && (tamM1 > 0 && tamM1 < 10) && (tamN > 0 && tamN < 10) && (tamN1 > 0 && tamN1 < 10)) {
+                if (tamM1 == tamN) {
+                    printf("A continuacion ingrese los valores para la matriz A\n");
+                    for (int i = 0; i < tamM; i++) {
+                        for (int j = 0; j < tamM1; j++) {
+                            printf("Ingrece el valor para la posicion %d, %d: ", i, j);
                             scanf("%f", &matA[i][j]);
-                        } else {
-                            matA[i][j] = 0;
                         }
-                        if (i < tamN && j < tamN) {
-                            printf("Ingrece el valor para la matriz B en la posicion %d, %d: ", i, j);
+                    }
+                    printf("A continuacion ingrese los valores para la matriz B\n");
+                    for (int i = 0; i < tamN; i++) {
+                        for (int j = 0; j < tamN1; j++) {
+                            printf("Ingrece el valor para la posicion %d, %d: ", i, j);
                             scanf("%f", &matB[i][j]);
-                        } else {
-                            matB[i][j] = 0;
                         }
-                        matA[i][j] *= matB[i][j];
                     }
-                }
-                printf("Resultado de la multiplicacion de matrices: \n");
-                for (int i = 0; i < tamO; i++) {
-                    for (int j = 0;j < tamO; j++) {
-                        printf("%f ", matA[i][j]);
+                    for (int i = 0; i < tamM; i++) {
+                        for (int j = 0; j < tamN1; j++) {
+                            matC[i][j] = 0;
+                            for (int k = 0; k < tamN; k++) {
+                                matC[i][j] += matA[i][k] * matB[k][j];
+                            }
+                        }
                     }
-                    printf("\n");
+                    printf("Resultado de la multiplicacion de A*B: \n");
+                    for (int i = 0; i < tamM; i++) {
+                        for (int j = 0;j < tamN1; j++) {
+                            printf("%f ", matC[i][j]);
+                        }
+                        printf("\n");
+                    }
+                } else if (tamN1 == tamM) {
+                    printf("A continuacion ingrese los valores para la matriz A\n");
+                    for (int i = 0; i < tamM; i++) {
+                        for (int j = 0; j < tamM1; j++) {
+                            printf("Ingrece el valor para la posicion %d, %d: ", i, j);
+                            scanf("%f", &matA[i][j]);
+                        }
+                    }
+                    printf("A continuacion ingrese los valores para la matriz B\n");
+                    for (int i = 0; i < tamN; i++) {
+                        for (int j = 0; j < tamN1; j++) {
+                            printf("Ingrece el valor para la posicion %d, %d: ", i, j);
+                            scanf("%f", &matB[i][j]);
+                        }
+                    }
+                    for (int i = 0; i < tamN; i++) {
+                        for (int j = 0; j < tamM1; j++) {
+                            matC[i][j] = 0;
+                            for (int k = 0; k < tamM; k++) {
+                                matC[i][j] += matB[i][k] * matA[k][j];
+                            }
+                        }
+                    }
+                    printf("Resultado de la multiplicacion de B*A: \n");
+                    for (int i = 0; i < tamN; i++) {
+                        for (int j = 0;j < tamM1; j++) {
+                            printf("%f ", matC[i][j]);
+                        }
+                        printf("\n");
+                    }
+                } else {
+                    printf("No se puede realizar una multiplicacion de matrices con los datos introducidos");
                 }
             } else {
                 printf("Ingrese una opcion valida\n");
