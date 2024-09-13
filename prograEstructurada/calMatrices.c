@@ -8,7 +8,7 @@ int main() {
         scanf("%d", &opc);
         switch (opc) {
         case 1:
-            printf("\nIngrese el tamano de la matriz: ");
+            printf("\nIngrese un tamano n (0 < n < 10) para la matriz: ");
             scanf("%d", &tamM);
             if (tamM > 0 && tamM < 10) {
                 for (int i = 0; i < tamM; i++) {
@@ -28,11 +28,11 @@ int main() {
                     printf("\n");
                 }
             } else {
-                printf("Ingrese una opcion valida\n");
+                printf("Ingrese un tamano valido\n");
             }
             break;
         case 2:
-            printf("\nIngrese el tamano de la matriz: ");
+            printf("\nIngrese un tamano n (0 < n < 10) para la matriz: ");
             scanf("%d", &tamM);
             if (tamM > 0 && tamM < 10) {
                 for (int i = 0; i < tamM; i++) {
@@ -52,11 +52,11 @@ int main() {
                     printf("\n");
                 }
             } else {
-                printf("Ingrese una opcion valida\n");
+                printf("Ingrese un tamano valido\n");
             }
             break;
         case 3:
-            printf("\nIngrese el tamano de la matriz: ");
+            printf("\nIngrese un tamano n (0 < n < 10) para la matriz: ");
             scanf("%d", &tamM);
             if (tamM > 0 && tamM < 10) {
                 printf("\nIngrese el valor del escalar: ");
@@ -76,17 +76,17 @@ int main() {
                     printf("\n");
                 }
             } else {
-                printf("Ingrese una opcion valida\n");
+                printf("Ingrese un tamano valido\n");
             }
             break;
         case 4:
-            printf("Ingresa un valor para la fila de la matriz A: ");
+            printf("Ingrese un tamano n (0 < n < 10) para la fila de la matriz A: ");
             scanf("%d", &tamM);
-            printf("Ingresa un valor para la columna de la matriz A: ");
+            printf("Ingrese un tamano n (0 < n < 10) para la columna de la matriz A: ");
             scanf("%d", &tamM1);
-            printf("Ingresa un valor para la fila de la matriz B: ");
+            printf("Ingrese un tamano n (0 < n < 10) para la fila de la matriz B: ");
             scanf("%d", &tamN);
-            printf("Ingresa un valor para la columna de la matriz B: ");
+            printf("Ingrese un tamano n (0 < n < 10) para la columna de la matriz B: ");
             scanf("%d", &tamN1);
             if ((tamM > 0 && tamM < 10) && (tamM1 > 0 && tamM1 < 10) && (tamN > 0 && tamN < 10) && (tamN1 > 0 && tamN1 < 10)) {
                 if (tamM1 == tamN) {
@@ -150,10 +150,10 @@ int main() {
                         printf("\n");
                     }
                 } else {
-                    printf("No se puede realizar una multiplicacion de matrices con los datos introducidos");
+                    printf("No se puede realizar una multiplicacion de matrices con las dimensiones introducidas");
                 }
             } else {
-                printf("Ingrese una opcion valida\n");
+                printf("Ingrese un tamano valido\n");
             }
             break;
         case 0:
