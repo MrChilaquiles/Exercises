@@ -71,13 +71,11 @@ int main() {
             printf("\nIngrese un tamano n (0 < n < 10) para la matriz: ");
             scanf("%d", &tamM);
             if (tamM > 0 && tamM < 10) {
-                printf("A continuacion ingrese los valores para la matriz A\n");
+                printf("A continuacion ingrese los valores para la matriz\n");
                 registro(tamM, tamM, matA);
-                printf("A continuacion ingrese los valores para la matriz B\n");
-                registro(tamM, tamM, matB);
                 printf("\nIngrese el valor del escalar: ");
                 scanf("%d", &kEsc);
-                procedimiento(tamM, matA, matB, kEsc);
+                procedimiento(tamM, matA, matA, kEsc);
                 resultado(tamM, tamM, matA);
             } else {
                 printf("Ingrese un tamano valido\n");
