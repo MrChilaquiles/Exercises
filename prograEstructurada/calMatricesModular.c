@@ -115,6 +115,8 @@ int main() {
                 } else {
                     printf("No se puede realizar una multiplicacion de matrices con las dimensiones introducidas\n");
                 }
+            } else {
+                printf("Ingrese un tamano valido\n");
             }
             break;
         case 0:
