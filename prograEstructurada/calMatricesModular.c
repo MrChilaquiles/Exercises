@@ -110,7 +110,7 @@ int main() {
                     registro(tamM, tamM1, matA);
                     printf("A continuacion ingrese los valores para la matriz B\n");
                     registro(tamN, tamN1, matB);
-                    multMatrices(tamN, tamM, tamM1, matA, matB, matC);
+                    multMatrices(tamN, tamM, tamM1, matB, matA, matC);
                     resultado(tamN, tamM1, matC);
                 } else {
                     printf("No se puede realizar una multiplicacion de matrices con las dimensiones introducidas\n");
