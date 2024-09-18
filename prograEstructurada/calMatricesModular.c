@@ -55,6 +55,7 @@ int main() {
                 printf("A continuacion ingrese los valores para la matriz B\n");
                 registro(tamM, tamM, matB);
                 procedimiento(tamM, matA, matB, 1);
+                printf("Resultado de la suma: \n");
                 resultado(tamM, tamM, matA);
             } else {
                 printf("Ingrese un tamano valido\n");
@@ -69,6 +70,7 @@ int main() {
                 printf("A continuacion ingrese los valores para la matriz B\n");
                 registro(tamM, tamM, matB);
                 procedimiento(tamM, matA, matB, 2);
+                printf("Resultado de la resta: \n");
                 resultado(tamM, tamM, matA);
             } else {
                 printf("Ingrese un tamano valido\n");
@@ -83,6 +85,7 @@ int main() {
                 printf("\nIngrese el valor del escalar: ");
                 scanf("%d", &kEsc);
                 procedimiento(tamM, matA, matA, kEsc);
+                printf("Resultado de la multiplicacion por escalar: \n");
                 resultado(tamM, tamM, matA);
             } else {
                 printf("Ingrese un tamano valido\n");
@@ -99,18 +102,20 @@ int main() {
             scanf("%d", &tamN1);
             if ((tamM > 0 && tamM < 10) && (tamM1 > 0 && tamM1 < 10) && (tamN > 0 && tamN < 10) && (tamN1 > 0 && tamN1 < 10)) {
                 if (tamM1 == tamN) {
-                    printf("A continuacion ingrese los valores para la matriz A\n");
+                    printf("Multiplicacion A*B\nA continuacion ingrese los valores para la matriz A\n");
                     registro(tamM, tamM1, matA);
                     printf("A continuacion ingrese los valores para la matriz B\n");
                     registro(tamN, tamN1, matB);
                     multMatrices(tamM, tamN, tamN1, matA, matB, matC);
+                    printf("Resultado de la multiplicacion de A*B: \n");
                     resultado(tamM, tamN1, matC);
                 } else if (tamN1 == tamM) {
-                    printf("A continuacion ingrese los valores para la matriz A\n");
+                    printf("Multiplicacion B*A\nA continuacion ingrese los valores para la matriz A\n");
                     registro(tamM, tamM1, matA);
                     printf("A continuacion ingrese los valores para la matriz B\n");
                     registro(tamN, tamN1, matB);
                     multMatrices(tamN, tamM, tamM1, matB, matA, matC);
+                    printf("Resultado de la multiplicacion de B*A: \n");
                     resultado(tamN, tamM1, matC);
                 } else {
                     printf("No se puede realizar una multiplicacion de matrices con las dimensiones introducidas\n");
