@@ -40,7 +40,7 @@ void resultado(int tamA, int tamB, float mat[dim][dim]) {
     }
 }
 int main() {
-    int tamM, tamM1, tamN, tamN1, kEsc = 0, opc = 1, opcP;
+    int tamM, tamM1, tamN, tamN1, kEsc = 0, opc = 1;
     float matA[dim][dim], matB[dim][dim], matC[dim][dim];
     while(opc != 0) {
         printf("Selecciona una opcion: \n1.- Suma de matrices\n2.- Resta de matrices\n3.- Multiplicacion por escalar\n4.- Multiplicacion de matrices\n0.- Salir\nOpcion: ");
