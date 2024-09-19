@@ -11,9 +11,9 @@ void registro(int tamA, int tamB, float mat[dim][dim]){
 void procedimiento(int tam, float matA[dim][dim], float matB[dim][dim], int opcP) {
     for (int i = 0; i < tam; i++) {
         for (int j = 0; j < tam; j++) {
-            if (opcP == 1) {
+            if (opcP == 0) {
                 matA[i][j] += matB[i][j];
-            } else if (opcP == 2) {
+            } else if (opcP == 1) {
                 matA[i][j] -= matB[i][j];
             } else {
                 matA[i][j] *= opcP;
@@ -54,7 +54,7 @@ int main() {
                 registro(tamM, tamM, matA);
                 printf("A continuacion ingrese los valores para la matriz B\n");
                 registro(tamM, tamM, matB);
-                procedimiento(tamM, matA, matB, 1);
+                procedimiento(tamM, matA, matB, 0);
                 printf("Resultado de la suma: \n");
                 resultado(tamM, tamM, matA);
             } else {
@@ -69,7 +69,7 @@ int main() {
                 registro(tamM, tamM, matA);
                 printf("A continuacion ingrese los valores para la matriz B\n");
                 registro(tamM, tamM, matB);
-                procedimiento(tamM, matA, matB, 2);
+                procedimiento(tamM, matA, matB, 1);
                 printf("Resultado de la resta: \n");
                 resultado(tamM, tamM, matA);
             } else {
