@@ -6,5 +6,8 @@
 !*.c
 !*.cpp
 !*.pdf
+!*.drawio
+!Basicos
 !IntProgra
 !prograEstructurada
+!agendaElectronica
