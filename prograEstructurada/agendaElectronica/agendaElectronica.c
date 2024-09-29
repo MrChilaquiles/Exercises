@@ -2,7 +2,15 @@
 #include <string.h>
 #define MAXUsers 30
 
+typedef struct {
+    char id[20]
+    char nombreC[50];
+    char email[50];
+    char telefono[10];
+} user;
+
 int main() {
+    user users[MAXUsers];
     int opc = 1, usercount = 0;
     char dato[50], clear;
     while (opc != 0) {
