@@ -95,7 +95,6 @@ int buscar(char ID[], int count, user users[], int nPro) {
 }
 
 void registro(char dato[], int posicion, user users[], char trash){
-    //dato[strlen(dato) - 1] = '\0';
     strcpy(users[posicion].id, dato);
     printf("Nombre completo: ");
     fgets(dato, sizeof(users->nombreC), stdin);
