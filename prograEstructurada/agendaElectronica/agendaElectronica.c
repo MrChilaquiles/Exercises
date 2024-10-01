@@ -12,10 +12,11 @@ typedef struct {
 
 int buscar(char ID[], int count, user users[], int nPro);
 void registro(char dato[], int posicion, user users[], char trash);
+void mostrar(int count, user users[]);
 
 int main() {
     user users[MAXUsers];
-    int opc = 1, userCount = 0;
+    int opc = 1, userCount = 0, pos = 0;
     char dato[50], clear;
     while (opc != 0) {
         printf("\nBienvenido a su agenda electronica\nSeleccione una opcion\n1.- Alta de usuario\n2.- Modificacion de usuario\n3.- Buscar usuario\n4.- Mostrar usuarios\n5.- Eliminar usuario\n0.- Salir\nOpcion: ");
@@ -27,7 +28,7 @@ int main() {
                 printf("Ingrese su ID: ");
                 fgets(dato, sizeof(users->id), stdin);
                 dato[strlen(dato) - 1] = '\0';
-                do {clear = getchar();} while (clear != '\n');
+                //do {clear = getchar();} while (clear != '\n');
                 if (userCount == 0) {
                     registro(dato, userCount, users, clear);
                     printf("Registro exitoso!!");
@@ -38,19 +39,33 @@ int main() {
                     userCount++;
                 } else {
                     printf("ID de usuario ya registrado");
-                }
+            }
             } else {
                 printf("Limite de usuarios agregados");
             }
             break;
         case 2:
             printf("Modificacion");
+            printf("Ingrese su ID: ");
+            fgets(dato, sizeof(users->id), stdin);
+            dato[strlen(dato) - 1] = '\0';
+            pos = buscar(dato, userCount, users, 2);
+            if (strcmp(users[pos].id, dato) == 0) {
+                registro(dato, pos, users, clear);
+            } else {
+                printf("ID de usuario no registrado");
+            }
             break;
         case 3:
             printf("buscar");
+            printf("Ingrese su ID: ");
+            fgets(dato, sizeof(users->id), stdin);
+            dato[strlen(dato) - 1] = '\0';
+            buscar(dato, userCount, users, 1);
             break;
         case 4:
             printf("mostrar todos");
+            mostrar(userCount, users);
             break;
         case 5:
             printf("Eliminar");
@@ -69,6 +84,9 @@ int buscar(char ID[], int count, user users[], int nPro) {
         if (strcmp(users[i].id, ID) == 0) {
             if (nPro == 1) {
                 printf("ID: %s\nNombre completo: %s\nEmail: %s\nTelefono: %s", users[i].id, users[i].nombreC, users[i].email, users[i].telefono);
+                return 0;
+            } else if (nPro == 2) {
+                return i;
             }
             return 0;
         }
@@ -77,20 +95,27 @@ int buscar(char ID[], int count, user users[], int nPro) {
 }
 
 void registro(char dato[], int posicion, user users[], char trash){
+    //dato[strlen(dato) - 1] = '\0';
     strcpy(users[posicion].id, dato);
     printf("Nombre completo: ");
     fgets(dato, sizeof(users->nombreC), stdin);
-    do {trash = getchar();} while (trash != '\n');
+    //do {trash = getchar();} while (trash != '\n');
     dato[strlen(dato) - 1] = '\0';
     strcpy(users[posicion].nombreC, dato);
     printf("Email: ");
     fgets(dato, sizeof(users->email), stdin);
-    do {trash = getchar();} while (trash != '\n');
+    //do {trash = getchar();} while (trash != '\n');
     dato[strlen(dato) - 1] = '\0';
     strcpy(users[posicion].email, dato);
     printf("Telefono: ");
     fgets(dato, sizeof(users->telefono), stdin);
-    do {trash = getchar();} while (trash != '\n');
+    //do {trash = getchar();} while (trash != '\n');
     dato[strlen(dato) - 1] = '\0';
     strcpy(users[posicion].telefono, dato);
+}
+
+void mostrar(int count, user users[]) {
+    for (int i = 0; i < count; i++) {
+        printf("Usuario %i\nID: %s\nNombre completo: %s\nEmail: %s\nTelefono: %s", (i + 1), users[i].id, users[i].nombreC, users[i].email, users[i].telefono);
+    }
 }
