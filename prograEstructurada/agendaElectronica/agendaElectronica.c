@@ -25,7 +25,7 @@ int main() {
         switch (opc) {
         case 1:
             if (userCount < MAXUsers) {
-                printf("Ingrese su ID: ");
+                printf("Ingrese el ID del usuario: ");
                 fgets(dato, sizeof(users->id), stdin);
                 dato[strlen(dato) - 1] = '\0';
                 //do {clear = getchar();} while (clear != '\n');
@@ -45,30 +45,50 @@ int main() {
             }
             break;
         case 2:
-            printf("Modificacion");
-            printf("Ingrese su ID: ");
-            fgets(dato, sizeof(users->id), stdin);
-            dato[strlen(dato) - 1] = '\0';
-            pos = buscar(dato, userCount, users, 2);
-            if (strcmp(users[pos].id, dato) == 0) {
-                registro(dato, pos, users, clear);
+            if (userCount > 0) {
+                printf("Ingrese el ID del susuario a modificar: ");
+                fgets(dato, sizeof(users->id), stdin);
+                dato[strlen(dato) - 1] = '\0';
+                pos = buscar(dato, userCount, users, 2);
+                if (strcmp(users[pos].id, dato) == 0) {
+                    registro(dato, pos, users, clear);
+                } else {
+                    printf("ID de usuario no registrado");
+                }
             } else {
-                printf("ID de usuario no registrado");
+                printf("No se puede realizar esta accion porque aun no hay usuarios registrados");
             }
             break;
         case 3:
-            printf("buscar");
-            printf("Ingrese su ID: ");
-            fgets(dato, sizeof(users->id), stdin);
-            dato[strlen(dato) - 1] = '\0';
-            buscar(dato, userCount, users, 1);
+            if (userCount > 0) {
+                printf("Ingrese el ID del usuario a buscar: ");
+                fgets(dato, sizeof(users->id), stdin);
+                dato[strlen(dato) - 1] = '\0';
+                buscar(dato, userCount, users, 1);
+            } else {
+                printf("No se puede realizar esta accion porque aun no hay usuarios registrados");
+            }
             break;
         case 4:
-            printf("mostrar todos");
-            mostrar(userCount, users);
+            if (userCount > 0) {
+                printf("Usuarios registrados\n");
+                mostrar(userCount, users);
+            } else {
+                printf("No se puede realizar esta accion porque aun no hay usuarios registrados");
+            }
             break;
         case 5:
-            printf("Eliminar");
+            if (userCount > 0) {
+                printf("Ingrese el ID del usuario a eliminar: ");
+                fgets(dato, sizeof(users->id), stdin);
+                if (buscar(dato, userCount, users, 0) == 0) {
+                    
+                } else {
+                    printf("ID de usuario no registrado");
+                }
+            } else {
+                printf("No se puede realizar esta accion porque aun no hay usuarios registrados");
+            }
             break;
         case 0:
             printf("Gracias!! nos vemos luego :)");
@@ -115,6 +135,6 @@ void registro(char dato[], int posicion, user users[], char trash){
 
 void mostrar(int count, user users[]) {
     for (int i = 0; i < count; i++) {
-        printf("Usuario %i\nID: %s\nNombre completo: %s\nEmail: %s\nTelefono: %s", (i + 1), users[i].id, users[i].nombreC, users[i].email, users[i].telefono);
+        printf("Usuario %i\nID: %s\nNombre completo: %s\nEmail: %s\nTelefono: %s\n", (i + 1), users[i].id, users[i].nombreC, users[i].email, users[i].telefono);
     }
 }
