@@ -40,7 +40,7 @@ int main() {
                     userCount++;
                 } else {
                     printf("ID de usuario ya registrado");
-            }
+                }
             } else {
                 printf("Limite de usuarios agregados");
             }
