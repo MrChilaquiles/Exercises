@@ -13,6 +13,7 @@ typedef struct {
 int buscar(char ID[], int count, user users[], int nPro);
 void registro(char dato[], int posicion, user users[], char trash);
 void mostrar(int count, user users[]);
+void eliminar(int pos, int count, user users[]);
 
 int main() {
     user users[MAXUsers];
@@ -81,8 +82,11 @@ int main() {
             if (userCount > 0) {
                 printf("Ingrese el ID del usuario a eliminar: ");
                 fgets(dato, sizeof(users->id), stdin);
+                dato[strlen(dato) - 1] = '\0';
                 if (buscar(dato, userCount, users, 0) == 0) {
-                    
+                    pos = buscar(dato, userCount, users, 2);
+                    eliminar(pos, userCount, users);
+                    userCount--;
                 } else {
                     printf("ID de usuario no registrado");
                 }
@@ -136,5 +140,14 @@ void registro(char dato[], int posicion, user users[], char trash){
 void mostrar(int count, user users[]) {
     for (int i = 0; i < count; i++) {
         printf("Usuario %i\nID: %s\nNombre completo: %s\nEmail: %s\nTelefono: %s\n", (i + 1), users[i].id, users[i].nombreC, users[i].email, users[i].telefono);
+    }
+}
+
+void eliminar(int pos, int count, user users[]) {
+    for (int i = pos; i < count; i++) {
+        strcpy(users[i].id, users[i+1].id);
+        strcpy(users[i].nombreC, users[i+1].nombreC);
+        strcpy(users[i].email, users[i+1].email);
+        strcpy(users[i].telefono, users[i+1].telefono);
     }
 }
