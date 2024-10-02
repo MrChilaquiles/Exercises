@@ -47,7 +47,7 @@ int main() {
             break;
         case 2:
             if (userCount > 0) {
-                printf("Ingrese el ID del susuario a modificar: ");
+                printf("Ingrese el ID del usuario a modificar: ");
                 fgets(dato, sizeof(users->id), stdin);
                 dato[strlen(dato) - 1] = '\0';
                 pos = buscar(dato, userCount, users, 2);
@@ -65,7 +65,11 @@ int main() {
                 printf("Ingrese el ID del usuario a buscar: ");
                 fgets(dato, sizeof(users->id), stdin);
                 dato[strlen(dato) - 1] = '\0';
-                buscar(dato, userCount, users, 1);
+                if (buscar(dato, userCount, users, 0) == 0) {
+                    buscar(dato, userCount, users, 1);
+                } else {
+                    printf("Usuario no registrado");
+                }
             } else {
                 printf("No se puede realizar esta accion porque aun no hay usuarios registrados");
             }
