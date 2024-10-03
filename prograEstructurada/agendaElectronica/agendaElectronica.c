@@ -14,6 +14,7 @@ int buscar(char ID[], int count, user users[], int nPro);
 void registro(char dato[], int posicion, user users[], char trash);
 void mostrar(int count, user users[]);
 void eliminar(int pos, int count, user users[]);
+void limpiar(char dato[], char trash);
 
 int main() {
     user users[MAXUsers];
@@ -28,7 +29,8 @@ int main() {
             if (userCount < MAXUsers) {
                 printf("Ingrese el ID del usuario: ");
                 fgets(dato, sizeof(users->id), stdin);
-                dato[strlen(dato) - 1] = '\0';
+                limpiar(dato, clear);
+                //dato[strlen(dato) - 1] = '\0';
                 //do {clear = getchar();} while (clear != '\n');
                 if (userCount == 0) {
                     registro(dato, userCount, users, clear);
@@ -49,7 +51,8 @@ int main() {
             if (userCount > 0) {
                 printf("Ingrese el ID del usuario a modificar: ");
                 fgets(dato, sizeof(users->id), stdin);
-                dato[strlen(dato) - 1] = '\0';
+                limpiar(dato, clear);
+                //dato[strlen(dato) - 1] = '\0';
                 pos = buscar(dato, userCount, users, 2);
                 if (strcmp(users[pos].id, dato) == 0) {
                     registro(dato, pos, users, clear);
@@ -64,7 +67,8 @@ int main() {
             if (userCount > 0) {
                 printf("Ingrese el ID del usuario a buscar: ");
                 fgets(dato, sizeof(users->id), stdin);
-                dato[strlen(dato) - 1] = '\0';
+                limpiar(dato, clear);
+                //dato[strlen(dato) - 1] = '\0';
                 if (buscar(dato, userCount, users, 0) == 0) {
                     buscar(dato, userCount, users, 1);
                 } else {
@@ -86,7 +90,8 @@ int main() {
             if (userCount > 0) {
                 printf("Ingrese el ID del usuario a eliminar: ");
                 fgets(dato, sizeof(users->id), stdin);
-                dato[strlen(dato) - 1] = '\0';
+                limpiar(dato, clear);
+                //dato[strlen(dato) - 1] = '\0';
                 if (buscar(dato, userCount, users, 0) == 0) {
                     pos = buscar(dato, userCount, users, 2);
                     eliminar(pos, userCount, users);
@@ -126,18 +131,15 @@ void registro(char dato[], int posicion, user users[], char trash){
     strcpy(users[posicion].id, dato);
     printf("Nombre completo: ");
     fgets(dato, sizeof(users->nombreC), stdin);
-    //do {trash = getchar();} while (trash != '\n');
-    dato[strlen(dato) - 1] = '\0';
+    limpiar(dato, trash);
     strcpy(users[posicion].nombreC, dato);
     printf("Email: ");
     fgets(dato, sizeof(users->email), stdin);
-    //do {trash = getchar();} while (trash != '\n');
-    dato[strlen(dato) - 1] = '\0';
+    limpiar(dato, trash);
     strcpy(users[posicion].email, dato);
     printf("Telefono: ");
     fgets(dato, sizeof(users->telefono), stdin);
-    //do {trash = getchar();} while (trash != '\n');
-    dato[strlen(dato) - 1] = '\0';
+    limpiar(dato, trash);
     strcpy(users[posicion].telefono, dato);
 }
 
@@ -153,5 +155,13 @@ void eliminar(int pos, int count, user users[]) {
         strcpy(users[i].nombreC, users[i+1].nombreC);
         strcpy(users[i].email, users[i+1].email);
         strcpy(users[i].telefono, users[i+1].telefono);
+    }
+}
+
+void limpiar(char dato[], char trash) {
+    if (dato[strlen(dato) - 1] == '\n') {
+        dato[strlen(dato) - 1] = '\0';
+    } else {
+        do {trash = getchar();} while (trash != '\n');
     }
 }
